@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style-setup.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <!-- Import Parse -->
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+</head>
+
+<body>
+<!-- NAV BAR -->
+
+<nav class="red lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">myCFL</a>
+        <!--<ul class="right hide-on-med-and-down">-->
+            <!--<li><a href="#">Settings</a></li>-->
+        <!--</ul>-->
+
+        <!--<ul id="nav-mobile" class="side-nav">-->
+            <!--<li><a href="#">Settings</a></li>-->
+        <!--</ul>-->
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<!-- INPUT FIELDS -->
+
+<div class="section no-pad-bot center-align" id="index-banner">
+    <div id="input-fields" class="container">
+        <br><br>
+
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">First name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Last name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="hometown" type="text" class="validate">
+                        <label for="hometown">Hometown</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="favourite_team" type="text" class="validate">
+                        <label for="favourite_team">Favorite team</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="height" type="text" class="validate">
+                        <label for="height">Height (ft)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="weight" type="text" class="validate">
+                        <label for="weight">Weight (lbs)</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="center" id="submit-button">
+    <a class="waves-effect waves-light btn-large red lighten-1" onclick="signUp()">Create Profile</a>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<script>
+    Parse.initialize("A9o1bVMJ29KeXuOgFo9paozMJBfAjAyx8yJke3d8", "hIxa3h9x7V1PWDa8seTQQBdVxHzYcAPGmarJ4WPN");
+
+    function signUp(){
+
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        
+        var firstName = document.getElementById("first_name").value;
+        var lastName = document.getElementById("last_name").value;
+        var hometown = document.getElementById("hometown").value;
+        var favoriteTeam = document.getElementById("favourite_team").value;
+        var height = document.getElementById("height").value;
+        var weight = document.getElementById("weight").value;
+
+        var user = new Parse.User();
+        user.set("username", username);
+        user.set("email", email);
+        user.set("password", password);
+
+        user.set("firstName", firstName);
+        user.set("lastName", lastName);
+        user.set("hometown", hometown);
+        user.set("favoriteTeam", favoriteTeam);
+        user.set("height", height);
+        user.set("weight", weight);
+
+        user.signUp(null, {
+            success: function(user) {
+                var params = {};
+                Parse.Cloud.run('Fans_init', params, {
+                    success: function(object) {
+                        // Show user create success
+                        window.location.href = "players.html";
+                    },
+                    error: function(error) {
+                        // Show user init error
+                        console.log(JSON.stringify(error));
+                    }
+                });
+            },
+            error: function(user, error) {
+                // Show signup error
+                console.log(JSON.stringify(error));
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
