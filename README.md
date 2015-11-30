@@ -16,6 +16,7 @@ Libraries: Various CFL .csv's and GeoPy
 Created new repo of branch worked on during SportsHack 2015
 -mp4.demo coming soon. 
 
+This is a beta version, calls to Social Media APIs (Youtube, Twitter, Instagram etc) for dynamically generating content are in development. 
 
 
 
