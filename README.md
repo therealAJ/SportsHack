@@ -19,5 +19,5 @@ Created new repo of branch worked on during SportsHack 2015
 Note: This is a beta version, calls to Social Media APIs (Youtube, Twitter, Instagram etc) for dynamically generating content are in development. Once this is encorporated, Parse will be able to store content from each CFL user profile.  
 
 
-https://cloud.githubusercontent.com/assets/12767206/11579645/871c0d44-99e4-11e5-9860-b63710db33fe.gif
+ ![Demo] (https://cloud.githubusercontent.com/assets/12767206/11579645/871c0d44-99e4-11e5-9860-b63710db33fe.gif) 
 
