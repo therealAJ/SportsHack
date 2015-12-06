@@ -13,8 +13,7 @@ Data Analysis: Cosine Similarity
 Libraries: Various CFL .csv's and GeoPy
 
 **************************************************************************************************************************************
-Created new repo of branch worked on during SportsHack 2015
--mp4.demo coming soon. 
+Created new repo of branch worked on during SportsHack 2015.
 
 Note: This is a beta version, calls to Social Media APIs (Youtube, Twitter, Instagram etc) for dynamically generating content are in development. Once this is encorporated, Parse will be able to store content from each CFL user profile.  
 
